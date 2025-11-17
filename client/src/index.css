@@ -1,1 +1,7 @@
+
 @import "tailwindcss";
+@import url('https://cdn.tailgrids.com/2.0/image/assets/css/tailwind.css');
+
+body {
+    background-color: rgb( 241, 245, 241);
+}
