@@ -6,8 +6,10 @@ export const Header = () => {
     <header className="bg-slate-200 shadow-md">
       <div className="flex max-w-6xl p-3 mx-auto justify-between items-center">
         <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-          <span className="text-slate-500">Sahand</span>
-          <span className="text-slate-700">Estate</span>
+          <Link to="/">
+            <span className="text-slate-500">Sahand</span>
+            <span className="text-slate-700">Estate</span>
+          </Link>
         </h1>
         <form className="bg-slate-100 flex items-center p-3 rounded-xl">
           <input
