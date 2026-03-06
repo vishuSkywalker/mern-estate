@@ -1,0 +1,3 @@
+## 2024-03-06 - Node.js Event Loop Blocking via Sync Cryptography
+**Learning:** This application previously relied on synchronous cryptographic functions (`bcryptjs.hashSync`, `bcryptjs.compareSync`) in Express.js controller routes (`auth.controller.js`, `user.controller.js`). Synchronous CPU-intensive tasks completely block the main thread/event loop in Node.js, meaning no other concurrent requests could be processed while hashing or comparing passwords, resulting in severely degraded performance under load.
+**Action:** Always utilize the asynchronous, promise-based counterparts (`await bcryptjs.hash`, `await bcryptjs.compare`) for cryptographic operations to maintain concurrency and high throughput.
