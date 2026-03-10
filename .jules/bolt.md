@@ -1,0 +1,3 @@
+## 2024-05-14 - Replace Synchronous Bcrypt Calls with Asynchronous Equivalents
+**Learning:** Found multiple instances of `bcryptjs.hashSync` and `bcryptjs.compareSync` in backend controllers. Synchronous cryptographic operations block the Node.js event loop, preventing the server from handling other concurrent requests.
+**Action:** Always use the Promise-based, asynchronous methods `await bcryptjs.hash` and `await bcryptjs.compare` in Node.js Express controllers to maintain high concurrency and prevent server lockups.
