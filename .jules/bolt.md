@@ -1,0 +1,3 @@
+## 2024-06-03 - [Synchronous bcryptjs Calls Block Event Loop]
+ **Learning:** [The codebase was previously using synchronous bcryptjs functions (`hashSync`, `compareSync`) in Express controllers. This is a severe anti-pattern for backend performance because synchronous cryptographic operations are CPU-intensive and will completely block the Node.js event loop, preventing the server from handling other incoming requests while the hash/compare is computing.]
+ **Action:** [Always use the asynchronous versions of bcryptjs functions (`await bcryptjs.hash`, `await bcryptjs.compare`) inside `try/catch` blocks for all Express controllers to ensure the event loop remains unblocked and the server can handle concurrent requests efficiently.]
