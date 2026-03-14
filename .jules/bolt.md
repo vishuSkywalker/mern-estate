@@ -1,0 +1,3 @@
+## 2024-05-24 - Async password hashing
+**Learning:** Using synchronous hashing functions (`bcryptjs.hashSync` and `bcryptjs.compareSync`) in Express controllers blocks the Node.js event loop, causing poor performance and potential downtime under load.
+**Action:** Always use asynchronous hashing functions (`await bcryptjs.hash` and `await bcryptjs.compare`) to prevent blocking the Node.js event loop.
