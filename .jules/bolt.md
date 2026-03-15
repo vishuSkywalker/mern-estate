@@ -1,0 +1,3 @@
+## 2024-05-24 - [Avoid blocking Node.js event loop with sync crypto operations]
+**Learning:** [Using synchronous functions from `bcryptjs` (like `hashSync` and `compareSync`) in Express controllers blocks the Node.js event loop, severely degrading the backend's concurrent request handling performance. Always use their asynchronous counterparts (`await bcryptjs.hash`, `await bcryptjs.compare`). Also, for secure random values use Node's `crypto` module instead of `Math.random()`.]
+**Action:** [When reviewing or writing backend authentication logic, always ensure asynchronous cryptography functions are used and any use of sync methods is refactored.]
