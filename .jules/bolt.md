@@ -1,0 +1,3 @@
+## 2024-05-20 - [Async Bcrypt Optimization]
+**Learning:** Found multiple instances where the codebase used synchronous `bcryptjs` functions (`hashSync` and `compareSync`) within Express controllers. In a single-threaded Node.js backend, these synchronous operations block the event loop entirely, preventing other requests from being served during computationally expensive hashing/comparing operations. This is a significant scalability bottleneck.
+**Action:** Always verify that cryptographic, hashing, or heavy computationally expensive operations within Node.js controllers utilize their asynchronous counterparts (e.g. `await bcryptjs.hash` over `bcryptjs.hashSync`) to maintain optimal concurrency.
