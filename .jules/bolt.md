@@ -1,0 +1,3 @@
+## 2026-03-20 - [Async bcryptjs usage for Express controller performance]
+**Learning:** Synchronous password hashing operations (`bcryptjs.hashSync` and `bcryptjs.compareSync`) block the Node.js event loop, significantly reducing concurrent request handling capacity. This is a common performance bottleneck in Node.js backend architecture.
+**Action:** Always prefer asynchronous versions (`await bcryptjs.hash` and `await bcryptjs.compare`) to process heavy cryptographic workloads efficiently without blocking other requests in Express controllers.
