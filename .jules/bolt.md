@@ -1,0 +1,3 @@
+## 2024-03-24 - [Avoid blocking the Node.js event loop with synchronous operations]
+**Learning:** The Express backend uses `bcryptjs` for hashing passwords. In controllers like `auth.controller.js` and `user.controller.js`, `hashSync` and `compareSync` were being used, which can block the Node.js event loop and degrade performance.
+**Action:** Always prefer using asynchronous methods (`await bcryptjs.hash` and `await bcryptjs.compare`) to prevent event loop blocking. Also, when adding new fields generated randomly (like in Google auth), always use cryptographically secure generation using `crypto.randomBytes(n)` instead of `Math.random()`.
