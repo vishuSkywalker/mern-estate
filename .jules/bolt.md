@@ -1,0 +1,3 @@
+## 2024-05-24 - Node.js Event Loop Blocking
+**Learning:** Found synchronous cryptographic operations (`bcryptjs.hashSync` and `compareSync`) inside API controllers (e.g., `signup`, `signin`, `google`, `updateUser`). In a Node.js backend handling multiple requests concurrently, using CPU-intensive synchronous operations blocks the main event loop entirely, destroying application performance under load.
+**Action:** Always verify that compute-heavy libraries like `bcrypt` are using their asynchronous implementations (e.g., `await bcrypt.hash` instead of `bcrypt.hashSync`) in Express routes to prevent the server from becoming unresponsive. I applied this optimization across `auth.controller.js` and `user.controller.js`.
