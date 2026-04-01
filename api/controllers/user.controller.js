@@ -13,7 +13,10 @@ export const updateUser = async (req, res, next) => {
     return next(errorHandler(401, "You can only update your own account!"));
   try {
     if (req.body.password) {
-      req.body.password = bcryptjs.hashSync(req.body.password, 10);
+      // ⚡ Bolt Performance Optimization: Replace synchronous hashSync with asynchronous hash
+      // Why: Prevents blocking the Node.js event loop during computationally expensive hashing
+      // Impact: Significantly improves server concurrency and response times under load
+      req.body.password = await bcryptjs.hash(req.body.password, 10);
     }
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
