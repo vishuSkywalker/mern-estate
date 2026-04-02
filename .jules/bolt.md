@@ -1,0 +1,3 @@
+## 2024-05-18 - Avoid synchronous cryptographic operations in controllers
+**Learning:** Using synchronous methods like `bcryptjs.hashSync` and `compareSync` blocks the Node.js event loop, degrading the application's throughput and responsiveness. Furthermore, when destructuring Mongoose documents after creation, referring to previous query result variables (like `user._doc` instead of `newUser._doc`) in `else` blocks where the variable is falsy leads to crashes.
+**Action:** Always prefer asynchronous versions (e.g., `await bcryptjs.hash`) to maintain high backend performance. Pay close attention to variable references when destructuring freshly created documents to avoid null reference crashes.
