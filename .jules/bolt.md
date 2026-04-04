@@ -1,0 +1,3 @@
+## 2025-01-20 - [Async Bcrypt]
+**Learning:** Found synchronous `bcryptjs.hashSync` and `bcryptjs.compareSync` in Express controllers. This blocks the Node.js event loop, preventing the server from handling other requests during password hashing/comparison.
+**Action:** Replace synchronous bcrypt operations with asynchronous ones (`await bcryptjs.hash`, `await bcryptjs.compare`) to improve backend performance and concurrency.
