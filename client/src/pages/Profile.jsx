@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { useRef,useState } from "react"
-import { set } from "mongoose"
 import { updateUserStart, updateUserSuccess, updateUserFailure } from "../redux/user/userSlice"
 import { useDispatch } from "react-redux"
 
@@ -50,7 +49,9 @@ export default function Profile() {
         <input type="text" onChange={handleChange} defaultValue={currentUser.username} placeholder="username" id="username" className="border p-3 rounded-lg" />
         <input type="text" onChange={handleChange} defaultValue={currentUser.email} placeholder="email" id="email" className="border p-3 rounded-lg" />
         <input type="text" onChange={handleChange} placeholder="password" id="password" className="border p-3 rounded-lg" />
-        <button className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">Update</button>
+        <button disabled={loading} className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
+          {loading ? 'Loading...' : 'Update'}
+        </button>
       </form>
       <div className="flex justify-between mt-5">
         <span className="text-red-700 cursor-pointer">Delete account</span>
