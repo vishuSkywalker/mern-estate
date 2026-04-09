@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux"
 import { useRef,useState } from "react"
-import { set } from "mongoose"
+
 import { updateUserStart, updateUserSuccess, updateUserFailure } from "../redux/user/userSlice"
 import { useDispatch } from "react-redux"
 
 export default function Profile() {
   const fileRef = useRef(null)
-  const { currentUser, loading, error } = useSelector((state) => state.user)
+  const { currentUser, error } = useSelector((state) => state.user)
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
